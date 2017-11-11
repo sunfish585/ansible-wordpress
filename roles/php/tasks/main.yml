@@ -19,3 +19,16 @@
     - php-pecl-xdebug
     - php-opcache
     - php-pecl-memcached
+  notify:
+   - Restart nginx
+   - Restart php-fpm
+
+- name: Upload php.ini
+  template: src=php.ini dest=/etc/php.ini
+  notify: Restart php-fpm
+
+- name: Upload www.conf
+  template: src=www.conf dest=/etc/php-fpm.d/www.conf
+
+- name: Start & Enabled php-fpm
+  service: name=php-fpm state=running enabled=yes
