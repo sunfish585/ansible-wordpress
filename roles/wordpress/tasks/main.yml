@@ -1,0 +1,16 @@
+---
+- name: Download wordpress
+  get_url:
+    - url=http://wordpress.org/wordpress-{{ wordpress_version }}.tar.gz
+    - dest=/srv/wordpress-{{ wordpress_version }}.tar.gz
+    - sha256sum="{{ wordpress_sha256sum }}"
+
+- name: Unarchive wordpress
+  unarchive: src=/srv/wordpress-{{ wordpress_version }}.tar.gz dest=/var/www/html/ copy=no
+
+- name: Change owner for wordpress
+  file: path=/var/www/html/wordpress-{{ wordpress_version }}/ owner=vagrant group=vagrant recurse=yes
+
+
+
+
