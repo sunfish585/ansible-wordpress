@@ -2,12 +2,21 @@
 - include: centos.yml
   when: ansible_distribution == "CentOS" and ansible_distribution_major_version >= 6
 
-- name: Auto start nginx
-  command: systemctl enable nginx
+- name: Upload nginx.conf
+  template: src=nginx.conf dest=/etc/nginx/nginx.conf
+  notify: Restart nginx
 
-- name: restart nginx
-  command: systemctl restart nginx
+- name: Upload default.conf
+  template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+  notify:
+    - Restart nginx
+    - Restart php-fpm
 
-# - name: Copy nginx configuration for wordpress
-#   template: src=default.conf dest=/etc/nginx/conf.d/default.conf
-#   notify: restart nginx
+- name: Start & Enabled nginx
+  service: name=nginx state=started enabled=yes
+
+# - name: Auto start nginx
+#   command: systemctl enable nginx
+
+# - name: restart nginx
+#   command: systemctl restart nginx
