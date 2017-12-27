@@ -2,3 +2,11 @@
 mysql_conf_dir:
   "CentOS": /etc/my.cnf.d
   "Ubuntu": /etc/mysql/conf.d
+
+mysql_conf_tpl: my-small.cnf.j2
+
+mysql_conf_file: server.cnf
+
+mysql_root_password: F9uWYiK4
+
+mysql_secure_installation: false
