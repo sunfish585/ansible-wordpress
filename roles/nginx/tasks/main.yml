@@ -11,12 +11,3 @@
   notify:
     - Restart nginx
     - Restart php-fpm
-
-- name: Start & Enabled nginx
-  service: name=nginx state=started enabled=yes
-
-# - name: Auto start nginx
-#   command: systemctl enable nginx
-
-# - name: restart nginx
-#   command: systemctl restart nginx
