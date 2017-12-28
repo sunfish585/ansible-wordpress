@@ -12,5 +12,5 @@ wordpress_sha256sum: 42ca594afc709cbef8528a6096f5a1efe96dcf3164e7ce321e87d57ae01
 
 wordpress_db_name: wordpress
 wordpress_db_user: wordpress
-wordpress_db_password: PASSWORD
+wordpress_db_password:
 
